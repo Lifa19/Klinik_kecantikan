@@ -1,0 +1,222 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 16%;
+    margin-left: 80px;
+    margin-top: 80px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .cardd {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 16%;
+    margin-left: 370px;
+    margin-top: -276px;
+  }
+  
+  .cardd:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .carddd {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 16%;
+    margin-left: 660px;
+    margin-top: -276px;
+  }
+  
+  .carddd:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .cardddd {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 16%;
+    margin-left: 950px;
+    margin-top: -276px;
+  }
+  
+  .cardddd:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .container {
+    padding: 2px 16px;
+  }
+
+
+/* 
+  
+.btnn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid #B5EAAA;
+  border-radius: 0.6em;
+  color: #B5EAAA;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  height: 15px;
+  width: 40px;
+}
+.btnn:hover, .btnn:focus {
+  color: #fff;
+  outline: 0;
+}
+.fourth {
+  border-color: #B5EAAA;
+  color: #000;
+  background-image: linear-gradient(45deg, #B5EAAA 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+  margin-left:-6px;
+}
+.fourth:hover {
+  background-position: 0;
+} */
+
+.btnnn{
+  width: 120px;
+  height: 30px;
+  border: 2px solid #B5EAAA;
+  border-radius: 0.6em;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin: 0px;
+}
+.btnnn:hover {
+  color: #fff;
+  outline: 0;
+}
+.fourth {
+  border-color: #B5EAAA;
+  color: #000;
+  background-image: linear-gradient(45deg, #B5EAAA 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+  margin-left:-15px;
+}
+.fourth:hover {
+  background-position: 0;
+  color: black;
+}
+
+.btnn2{
+  width: 35px;
+  height: 30px;
+  border: 2px solid #B5EAAA;
+  border-radius: 0.6em;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin-top: -30px;
+  margin-left: 107px;
+  
+}
+.btnn2:hover {
+  color: #fff;
+  outline: 0;
+}
+.fourth {
+  border-color: #B5EAAA;
+  color: #000;
+  background-image: linear-gradient(45deg, #B5EAAA 50%, transparent 50%);
+  margin-right: -10%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+  
+
+}
+.fourth:hover {
+  background-position: 0;
+  color: black;
+}
+
+.btnn3{
+  width: 35px;
+  height: 30px;
+  border: 2px solid #B5EAAA;
+  border-radius: 0.6em;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin-top: -30px;
+  margin-left: 144px;
+  
+}
+.btnn3:hover {
+  color: #fff;
+  outline: 0;
+}
+.fourth {
+  border-color: #B5EAAA;
+  color: #000;
+  background-image: linear-gradient(45deg, #B5EAAA 50%, transparent 50%);
+  margin-right: -10%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+  
+
+}
+.fourth:hover {
+  background-position: 0;
+  color: black;
+}
+
+.btnn4{
+  width: 50px;
+  height: 30px;
+  border: 2px solid #B5EAAA;
+  border-radius: 0.6em;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin-top: -30px;
+  margin-left: 130px;
+  
+}
+.btnn4:hover {
+  color: #fff;
+  outline: 0;
+}
+.fourth {
+  border-color: #B5EAAA;
+  color: #000;
+  background-image: linear-gradient(45deg, #B5EAAA 50%, transparent 50%);
+  margin-right: -10%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+  
+
+}
+.fourth:hover {
+  background-position: 0;
+  color: black;
+}
