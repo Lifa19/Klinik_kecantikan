@@ -8,7 +8,9 @@ use App\Models\{
     Product,
     Cart,
     PaymentChannel,
-    BookingDetail
+    BookingDetail,
+    Member,
+    Discount
 };
 use Carbon\Carbon;
 use DateTime;
@@ -109,6 +111,21 @@ class BookingController extends Controller
         ]);
 
         if ($booking) {
+            $bookings      = Booking::where('customer_id', auth()->user()->Customer->id)->get();
+
+            foreach ($bookings as $item) {
+                if (!is_null($item->bookingDetail)) {
+                    $booking_count = $item->bookingDetail->where('payment_status', 'LUNAS')->count();
+                }
+            }
+
+            if ($booking_count == 15 && !Member::where('user_id', auth()->user()->id)->exists()) {
+                $member = Member::create([
+                    'user_id'    => auth()->user()->id,
+                    'discount_id'=> Discount::first()->id
+                ]);
+            }
+
             $cart = Cart::where('product_id', $product->id)
                             ->where('customer_id', $booking->customer_id)->first();
             $cart->delete();
