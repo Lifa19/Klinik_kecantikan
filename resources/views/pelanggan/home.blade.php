@@ -30,7 +30,7 @@
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
-                    <img class="slider_img animate-in" src="{{ asset('vendor/client/assets/img/slides/sequence/img-1.png') }}" alt="">
+                    <img class="slider_img animate-in" src="{{ asset('vendor/client/assets/img/slides/sequence/afsaf.png') }}" alt="">
                   </li>
                   <!-- Layer 2 -->
                   <li>

@@ -38,26 +38,26 @@
                         <th>Gambar</th>
                         <th>Harga</th>
                         <th>Qty</th>
-                        <th>p</th>
+                        <th>ChekOut</th>
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ( $baskets as $basket )
+                        @foreach ( $carts as $cart )
                             <tr>
-                                <td>{{ $basket->Customer->name }}</td>
-                                    {{-- <td>{!! DNS2D::getBarcodeHTML($basket->Customer->name, 'QRCODE') !!}</td> --}}
-                                <td>{{ $basket->Product->name }}</td>
+                                <td>{{ $cart->Customer->name }}</td>
+                                    {{-- <td>{!! DNS2D::getBarcodeHTML($cart->Customer->name, 'QRCODE') !!}</td> --}}
+                                <td>{{ $cart->Product->name }}</td>
                                 <td class="card">
-                                    <img src="{{ Storage::url('public/images/').$basket->Product->picture }}" alt="Image">
+                                    <img src="{{ Storage::url('public/images/').$cart->Product->picture }}" alt="Image">
                                 </td>
-                                <td>{{ $basket->Product->price }}</td>
-                                <form action="{{ route('booking.store', $basket->Product->id) }}" method="POST">
+                                <td>{{ $cart->Product->price }}</td>
+                                <form action="{{ route('booking.store', $cart->Product->id) }}" method="POST">
                                     @csrf
                                 <td>
                                     <input type="number" name="quota" class="form-control form-sm">
                                 </td>
                                 <td>
-                                        <input type="hidden" name="customer_id" class="form-control form-sm" value="{{ $basket->customer_id }}">
+                                        <input type="hidden" name="customer_id" class="form-control form-sm" value="{{ $cart->customer_id }}">
                                         <button class="btn btn-color" type="submit">Check Out</button>
                                 </td>
                                 </form>

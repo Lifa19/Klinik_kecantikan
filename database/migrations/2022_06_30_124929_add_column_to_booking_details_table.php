@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('discounts', function (Blueprint $table) {
-            $table->id();
-            $table->integer('presentase');
-            $table->string('description',255);
-            $table->string('stock',100);
-            $table->string('picture')->nullable();
-            $table->timestamps();
+        Schema::table('booking_details', function (Blueprint $table) {
+            $table->enum('payment_status', ['LUNAS', 'BELUM LUNAS', 'PROSES'])->default('BELUM LUNAS')->after('payment_time');
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discounts');
+        Schema::table('booking_details', function (Blueprint $table) {
+            //
+        });
     }
 };

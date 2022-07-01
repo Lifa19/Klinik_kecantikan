@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->dateTime('date');
+            $table->date('date');
             $table->integer('qty');
             $table->integer('subtotal');
             $table->string('no_invoice');

@@ -17,8 +17,6 @@
     </div>
   </section>
   <div class="container">
-    <!-- Docs nav
-    ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
@@ -26,17 +24,11 @@
         </ul>
       </div>
       <div class="span9">
-        <!-- Download
-        ================================================== -->
         <section id="general-template" class="doc">
           <div class="page-header">
             <h3>Pesanan Saya</h3>
-
-            <!-- Tab panes -->
             <div class="tab-content">
                 <div id="home" class="container tab-pane active"><br>
-                {{-- <h3>HOME</h3> --}}
-                {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --}}
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -45,51 +37,57 @@
                         <th>Qty</th>
                         <th>Total Bayar</th>
                         <th>Invoce</th>
-                        <th>Status</th>
+                        <th>Aksi/Status</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <form action="" method="POST">
-                            @csrf
                         @foreach ( $bookings as $booking )
                         <tr>
-                        <td>{{ $booking->Customer->name}}</td>
+                            <td>{{ $booking->Customer->name}}</td>
                             {{-- <td>{!! DNS2D::getBarcodeHTML($booking->Customer->name, 'QRCODE') !!}</td> --}}
-                        <input type="hidden" name="customer_id" class="form-control form-sm" value="{{ $booking->customer_id }}">
-                        <td>{{ $booking->date }}</td>
-                        <td>{{ $booking->qty }}</td>
-                        <td>{{ $booking->subtotal }}</td>
-                        <td>{{ $booking->no_invoice }}</td>
-                        <td>
-                            <form action="" method="POST" class="d-inline">
-                                <button type="submit" class="btn btn-danger">Belum Bayar</i></button>
-                                @method('DELETE')
-                                @csrf
+                            <input type="hidden" name="customer_id" class="form-control form-sm" value="{{ $booking->customer_id }}">
+                            <td>{{ $booking->date }}</td>
+                            <td>{{ $booking->qty }}</td>
+                            <td>{{ $booking->subtotal }}</td>
+                            <td>{{ $booking->no_invoice }}</td>
+                            <td>
+                            {{-- <form action="" method="POST">
+                                @csrf --}}
+                                    {{-- <form id="exampleModal"action="" method="POST" class="d-inline"> --}}
+                            <!-- Button trigger modal -->
+                            @if (!$booking->bookingDetail)
+                                <a href="{{ route('formPayment', $booking->id) }}" type="button" class="btn btn-color">
+                                    Bayar
+                                </a>
+                            @else
+                                @if ($booking->bookingDetail->status_payment == 'LUNAS')
+                                    <span class="label label-success">{{ $booking->bookingDetail->payment_status}}</span>
+                                @elseif ($booking->bookingDetail->payment_status == 'PROSES')
+                                    <span class="label label-warning">SEDANG {{ $booking->bookingDetail->payment_status }}</span>
+                                @else
+                                    <span class="label label-important">{{ $booking->bookingDetail->payment_status }}</span>
+                                @endif
+                            @endif
+                                {{-- @method('DELETE')
+                                @csrf --}}
                                 {{-- <a href="" class="btn btn-secondary">
                                     <i class="fa-solid fa-pen"></i>
                                 </a> --}}
-                            </form>
+                            {{-- </form> --}}
                         </td>
                         </tr>
                          @endforeach
                     </tbody>
                 </table>
                 </div>
-                {{-- <div id="menu1" class="container tab-pane fade"><br>
-                <h3>Menu 1</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div id="menu2" class="container tab-pane fade"><br>
-                <h3>Menu 2</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                </div> --}}
             </div>
+
         </section>
+         <!-- Modal -->
       </div>
     </div>
   </div>
   <!-- Footer
  ================================================== -->
-
 
  @endsection

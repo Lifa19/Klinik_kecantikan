@@ -8,49 +8,39 @@
   <section class="section">
     <div class="section-header">
       <div class="section-header-back">
-        <a href="{{ route('product.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        <a href="{{ route('discount.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
       </div>
-      <h1>Produk</h1>
+      <h1>Promo</h1>
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         {{-- <div class="breadcrumb-item"><a href="#">Posts</a></div> --}}
-        <div class="breadcrumb-item"><a href="{{ route('product.index') }}">Produk</a></div>
-        <div class="breadcrumb-item">Tambah Produk</div>
+        <div class="breadcrumb-item"><a href="{{ route('discount.index') }}">Promo</a></div>
+        <div class="breadcrumb-item">Tambah Promo</div>
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Produk</h2>
+      <h2 class="section-title">Promo</h2>
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Tambah Produk</h4>
+              <h4>Tambah Promo</h4>
             </div>
             <div class="card-body">
-              <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('discount.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Produk</label>
                 <div class="col-sm-12 col-md-7">
-                  <input  class="form-control @error('name') is-invalid @enderror" id="inputName" name="name" placeholder="Nama" >
-                        @error('name')
+                  <input  class="form-control @error('product_id') is-invalid @enderror" id="inputProduct" name="product_id" placeholder="Produk" >
+                        @error('product_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                 </div>
               </div>
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category_product</label>
-                <div class="col-sm-12 col-md-7">
-                  <select class="form-control @error('category_product_id') is-invalid @enderror" name="category_product_id" id="select_category_product_id" required>
-                    <option value="">Kategori</option>
-                        @foreach($categoryproduct as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
-                        @endforeach
-                  </select>
-                </div>
-              </div>
+
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
                 <div class="col-sm-12 col-md-7">

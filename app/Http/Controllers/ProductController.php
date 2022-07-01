@@ -53,15 +53,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'               => 'required|string|unique:products,name|max:100',
-            'description'        => 'required|string|max:255',
-            'price'              => 'required|numeric',
-            'stock'              => 'required|numeric',
-            'picture'            => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'name'                => 'required|string|unique:products,name|max:100',
+            'description'         => 'required|string|max:255',
+            'price'               => 'required|numeric',
+            'discount'            => 'nullable|numeric',
+            'stock'               => 'required|numeric',
+            'picture'             => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
             'category_product_id' => 'required',
         ]);
 
+        $product = Product::findOrFail();
         $data = $request->all();
+        $data['discount'] = $data['discount'] * $product->price / 100;
 
         if ($request->file('picture')) {
             $picture                     = $request->file('picture');
@@ -72,11 +75,12 @@ class ProductController extends Controller
         }
         $product = Product::create([
             'category_product_id' => $data['category_product_id'],
-            'name'      => $data['name'],
+            'name'        => $data['name'],
             'description' => $data['description'],
-            'price'     => $data['price'],
-            'stock'     => $data['stock'],
-            'picture'   => $data['picture']
+            'price'       => $data['price'],
+            'discount'    => $data['discount'],
+            'stock'       => $data['stock'],
+            'picture'     => $data['picture']
         ]);
 
         if ($product) {
@@ -123,6 +127,7 @@ class ProductController extends Controller
             'name'        => 'required|string|max:100|unique:products,name,'.$product->id,
             'description' => 'required|string|max:255',
             'price'       => 'required|numeric',
+            'discount'    => 'nullable|numeric',
             'stock'       => 'required|numeric',
             'picture'     => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
         ]);

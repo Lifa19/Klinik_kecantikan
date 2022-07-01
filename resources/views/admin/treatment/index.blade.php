@@ -38,16 +38,9 @@
               <div class="card">
                 <div class="card-header">
                   <h4>Treatment</h4>
-                  <a href="{{ route('treatment.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
                   <div class="card-header-action">
-                    <form>
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                        </div>
-                      </div>
-                    </form>
+                  <a href="{{ route('treatment.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
+
                   </div>
                 </div>
                 <div class="card-body p-0">
@@ -61,6 +54,7 @@
                           <th>Nama</th>
                           <th>Deskripsi</th>
                           <th>Harga</th>
+                          <th>Diskon</th>
                           <th>Stok</th>
                           <th>Image</th>
                           <th>Action</th>
@@ -78,9 +72,10 @@
                           <td>{{ $item->name }}</td>
                           <td>{{ $item->description }}</td>
                           <td>{{ $item->price }}</td>
+                          <td>{{ $item->discount }}</td>
                           <td>{{ $item->stock }}</td>
-                          <td style="width:120%;">
-                            <img src="{{ Storage::url('public/images/').$item->picture }}" alt="Image">
+                          <td>
+                            <img src="{{ Storage::url('public/images/').$item->picture }}" width="40px" alt="Image">
                           </td>
                           {{-- <td> --}}
                             {{-- <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">Edit</a> --}}

@@ -24,11 +24,11 @@ use App\Http\Controllers\{
     WhiteningController,
     WorkshopController,
     BookingController,
-    BasketController,
+    CartController,
     ProfileController,
     DiscountController,
 };
-
+use App\Models\Booking;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +82,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('workshop', WorkshopController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/discount', DiscountController::class);
+    Route::get('pemesanan', [BookingController::class, 'indexAdmin'])->name('indexAdmin');
+    Route::post('pemesanan/{booking}', [BookingController::class, 'verifyPembayaran'])->name('verifyPembayaran');
 });
 
 Route::get('/user', [HomeController::class, 'pelanggan'])->name('userHome');
@@ -99,7 +101,7 @@ Route::middleware(['auth', 'role:pelanggan','userprofile'])->group(function () {
     Route::get('pelanggan/workshop', [WorkshopController::class, 'workshopp'])->name('workshopp');
     Route::get('pelanggan/seminar', [SeminarController::class, 'seminarr'])->name('seminarr');
     Route::get('pelanggan/detail', [BookingController::class, 'detail'])->name('detail');
-    Route::resource('basket', BasketController::class);
+    Route::resource('cart', CartController::class);
     Route::get('pelanggan/profile', [ProfileController::class, 'profilePelanggan'])->name('profilePelanggan');
     Route::get('pelanggan/treatment', [TreatmentController::class, 'treatmentt'])->name('treatmentt');
     Route::get('pelanggan/academy', [AcademyController::class, 'academyy'])->name('academyy');
@@ -107,6 +109,8 @@ Route::middleware(['auth', 'role:pelanggan','userprofile'])->group(function () {
     Route::resource('booking', BookingController::class, ['except' => ['store']]);
     Route::post('booking/{id}', [BookingController::class, 'store'])->name('booking.store');
     Route::get('admin/member/index', [MemberController::class, 'store'])->name('store');
+    Route::get('payment/{id}',      [BookingController::class, 'formPayment'])->name('formPayment');
+    Route::post('payment/{booking}', [BookingController::class, 'payment'])->name('payment');
 
 
 

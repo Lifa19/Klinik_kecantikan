@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Basket;
+use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Treatment;
 use App\Models\Product;
 
-class BasketController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,24 +17,21 @@ class BasketController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:basket-list|basket-create|basket-edit|basket-delete',
+        $this->middleware('permission:cart-list|cart-create|cart-edit|cart-delete',
         ['only' => ['index','store']]);
-        $this->middleware('permission:basket-create',
+        $this->middleware('permission:cart-create',
         ['only' => ['create','store']]);
-        $this->middleware('permission:basket-edit',
+        $this->middleware('permission:cart-edit',
         ['only' => ['edit','update']]);
-        $this->middleware('permission:basket-delete',
+        $this->middleware('permission:cart-delete',
         ['only' => ['delete','destory']]);
 
     }
     public function index()
     {
 
-        $baskets = Basket::where('customer_id', auth()->user()->Customer->id)->get();
-        // $baskets = $request->customer();
-        // $baskets = Basket::where('Customer_id', $baskte);
-
-        return view('pelanggan.basket.basket', compact('baskets'));
+        $carts = Cart::where('customer_id', auth()->user()->Customer->id)->get();
+        return view('pelanggan.cart.cart', compact('carts'));
 
     }
 
@@ -45,9 +42,7 @@ class BasketController extends Controller
      */
     public function create(Request $request)
     {
-        // $basket     = Basket::all();
-        // return view('pelanggan.basket.create',compact('basket'));
-
+        //
     }
 
     /**
@@ -60,14 +55,14 @@ class BasketController extends Controller
     {
 
         $data = $request->all();
-        $basket = Basket::create([
+        $cart = Cart::create([
             'product_id'   => $data['product_id'],
             'customer_id'  => auth()->user()->Customer->id,
         ]);
 
-        if ($basket) {
-            return redirect()->route('basket.index')
-                             ->with('success', 'Basket successfully.');
+        if ($cart) {
+            return redirect()->route('cart.index')
+                             ->with('success', 'Cart.');
             } else {
                 Echo "Failed";
             }
@@ -104,23 +99,18 @@ class BasketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // {
-        //     $basket = Basket::findOrFail($id);
+        {
+            $cart = Cart::findOrFail($id);
+            $validatedData = $request->validate([
+                'customer_id'  => 'required|string|max:100|unique:carts,name,'.$cart->id,
+                'product_id'   => 'required',
+            ]);
 
-        //     $validatedData = $request->validate([
-        //         'customer_id'  => 'required|string|max:100|unique:baskets,name,'.$basket->id,
-        //         'address'      => 'required|string|max:255',
-        //         'phone'        => 'required|numeric|digits_between:10,13',
-        //         'dateOfBirth'  => 'required|date',
-        //         'gender'       => 'required|string',
-        //         'picture'      => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
-        //     ]);
+            $cart->update($validatedData);
 
-        //     $basket->update($validatedData);
-
-        //     return redirect()->route('customer.index')
-        //                      ->with('success', 'Data Berhasil Diupdate!');
-        // }
+            return redirect()->route('cart.cart')
+                             ->with('success', 'Data Berhasil Diupdate!');
+        }
     }
 
     /**

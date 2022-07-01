@@ -6,10 +6,10 @@
     <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Academy</h1>
+            <h1>Pemesanan</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item">Academy</div>
+                <div class="breadcrumb-item">Pemesanan</div>
               </div>
           </div>
           @if (session('success'))
@@ -37,9 +37,9 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Academy</h4>
+                  <h4>Pemesanan</h4>
                   <div class="card-header-action">
-                  <a href="{{ route('academy.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
+
                     {{-- <form>
                       <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -52,54 +52,48 @@
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive">
-                    <table class="table table-striped" id="sortable-table">
-                      <thead>
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
-                          <th class="text-center">
-                            <i class="fas fa-th"></i>
-                          </th>
-                          <th>Nama</th>
-                          <th>Deskripsi</th>
-                          <th>Harga</th>
-                          <th>Diskon</th>
-                          <th>Stok</th>
-                          <th>Image</th>
-                          <th>Action</th>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Qty</th>
+                            <th>Total Bayar</th>
+                            <th>Invoce</th>
+                            <th>Aksi</th>
                         </tr>
-                      </thead>
-                      <tbody>
-                    @foreach ($products->where('name', 'Academy') as $product)
-                        @foreach ($product->Products as $item)
-                        <tr>
-                          <td>
-                            <div class="sort-handler">
-                              <i class="fas fa-th"></i>
-                            </div>
-                          </td>
-                          <td>{{ $item->name }}</td>
-                          <td>{{ $item->description }}</td>
-                          <td>{{ $item->price }}</td>
-                          <td>{{ $item->discount }}</td>
-                          <td>{{ $item->stock }}</td>
-                          <td>
-                            <img src="{{ Storage::url('public/images/').$item->picture }}" width="40px" alt="Image">
-                          </td>
-                          {{-- <td> --}}
-                            {{-- <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">Edit</a> --}}
-                            <td>
-                                <a href="{{ route('academy.edit', $item->id) }}" class="btn btn-secondary">
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-                                <form action="{{ route('academy.destroy', $item->id) }}" method="POST" class="d-inline">
-                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash"></i></button>
-                                    @method('DELETE')
-                                    @csrf
-                                </form>
+                        </thead>
+                        <tbody>
+                            @foreach ($bookings as $booking )
+                            <tr>
+                                <td>{{ $booking->Customer->name}}</td>
+                                {{-- <td>{!! DNS2D::getBarcodeHTML($booking->Customer->name, 'QRCODE') !!}</td> --}}
+                                <input type="hidden" name="customer_id" class="form-control form-sm" value="{{ $booking->customer_id }}">
+                                <td>{{ $booking->date }}</td>
+                                <td>{{ $booking->qty }}</td>
+                                <td>{{ $booking->subtotal }}</td>
+                                <td>{{ $booking->no_invoice }}</td>
+                                <td>
+                                {{-- <form action="" method="POST">
+                                    @csrf --}}
+                                        {{-- <form id="exampleModal"action="" method="POST" class="d-inline"> --}}
+                                <!-- Button trigger modal -->
+                                    @if ($booking->bookingDetail->payment_status != 'LUNAS')
+                                    <form action="{{ route('verifyPembayaran', $booking->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <input type="submit" value="Verifikasi Pembayaran" class="btn btn-primary">
+                                    </form>
+                                    @endif
+                                    {{-- @method('DELETE')
+                                    @csrf --}}
+                                    {{-- <a href="" class="btn btn-secondary">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a> --}}
+                                {{-- </form> --}}
                             </td>
-                        </tr>
-                        @endforeach
-                    @endforeach
-                      </tbody>
+                            </tr>
+                             @endforeach
+                        </tbody>
                     </table>
                   </div>
                 </div>
@@ -131,11 +125,3 @@
   <!-- Page Specific JS File -->
   <script src="{{ asset ('vendor/admin/assets/js/page/components-table.js') }}"></script>
 @endpush
-
-
-
-
-
-
-
-

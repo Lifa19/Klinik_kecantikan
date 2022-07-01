@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('category_product_id')->references('id')->on('category_products');
             $table->string('name',100);
             $table->string('description',255);
+            $table->integer('discount')->nullable();
             $table->string('price',20);
             $table->string('stock',100);
             $table->string('picture')->nullable();

@@ -50,7 +50,7 @@
                     </a>
                   </li>
                   <li class="dropdown">
-                    <a href="{{ route('basket.index') }}">
+                    <a href="{{ route('cart.index') }}">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                   </li>

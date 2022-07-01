@@ -41,6 +41,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// $app->singleton('dompdf');
 /*
 |--------------------------------------------------------------------------
 | Return The Application

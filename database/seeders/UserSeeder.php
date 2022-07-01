@@ -32,9 +32,9 @@ class UserSeeder extends Seeder
         // ]);
 
         $user = User::create([
-            'name'=>'lifa',
-            'email'=>'lifa@gmail.com',
-            'password'=>bcrypt('lifaaa19')
+            'name'=>'admin',
+            'email'=>'admin@gmail.com',
+            'password'=>bcrypt('admin123')
         ]);
 
         $role           = Role::where('name', 'admin')->first();
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'password'=>bcrypt('sifa1234')
         ]);
         // $level               = Level::('');
-        
+
         $role           = Role::where('name', 'pelanggan')->first();
         $permissions    = Permission::pluck('id', 'id')->all();
 
@@ -57,16 +57,16 @@ class UserSeeder extends Seeder
         $user->assignRole([$role->id]);
 
         $user = User::create([
-            'name'=>'tifa',
-            'email'=>'tifa@gmail.com',
-            'password'=>bcrypt('tifa1234')
+            'name'=>'karyawan',
+            'email'=>'karyawan@gmail.com',
+            'password'=>bcrypt('karyawan')
         ]);
-        
+
         $role           = Role::where('name', 'karyawan')->first();
         $permissions    = Permission::pluck('id', 'id')->all();
 
         $role->givePermissionTo([$permissions]);
         $user->assignRole([$role->id]);
     }
-    
+
 }

@@ -24,23 +24,24 @@ class ProductSeeder extends Seeder
         $products =
              [
                 [
-                    'name' => 'Cream Pagi',
-                    'description' => 'Cream pagi ini membantu mencerahkan wajah',
-                    'price' => '80000',
+                    'name' => 'Sulam Alis & Retouch 1x',
+                    'description' => 'Type dan warna sesuai dengan keinginan',
+                    'price' => '1500000',
                     'picture'  => 'foto.jpg',
-                    'stock'  => '9',
+                    'stock'  => '8',
                     'category_product_id' => '1',
                 ],
                 [
                     'name' => 'Cream Malam',
                     'description' => 'Cream malam ini membantu mencerahkan wajah',
                     'price' => '70000',
+                    'discount' => 10,
                     'picture'  => 'foto3.jpg',
-                    'stock'  => '8',
+                    'stock'  => '40',
                     'category_product_id' => '2',
                 ],
                 [
-                    'name' => 'Toner',
+                    'name' => 'Brow Henna',
                     'description' => 'Cream malam ini membantu mencerahkan wajah',
                     'price' => '60000',
                     'picture'  => 'foto2.jpg',

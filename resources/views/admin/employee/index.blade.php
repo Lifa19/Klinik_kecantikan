@@ -8,10 +8,9 @@
           <div class="section-header">
             <h1>Karyawan</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumd-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumd-item"><a href="#"> Karyawan</a></div>
-              <div class="breadcrumd-item"><a href="#"> Form</a></div>
-            </div>
+                <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                <div class="breadcrumb-item">Karyawan</div>
+              </div>
           </div>
           @if (session('success'))
               <div class="col-sm-12">
@@ -82,7 +81,7 @@
                           <td>{{ $employee->dateOfBirth }}</td>
                           <td>{{ $employee->gender }}</td>
                           <td>
-                            <img src="{{ Storage::url('public/images/').$employee->picture }}" alt="Image">
+                            <img src="{{ Storage::url('public/images/').$employee->picture }}" width="40px" alt="Image">
                           </td>
                             <form action="{{ route('employee.destroy', $employee->id) }}" method="POST">
                                 <td>

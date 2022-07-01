@@ -18,8 +18,7 @@ class MemberSeeder extends Seeder
         $members = [
             [
                 'user_id'  => '2',
-                'discount_id' => '1',
-                'presentase' => '2',
+                'discount_id' => '1'
             ],
 
           ];

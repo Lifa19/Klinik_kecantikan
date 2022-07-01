@@ -62,6 +62,7 @@
                           <th>Nama</th>
                           <th>Deskripsi</th>
                           <th>Harga</th>
+                          <th>Diskon</th>
                           <th>Stok</th>
                           <th>Image</th>
                           <th>Action</th>
@@ -79,13 +80,14 @@
                           <td>{{ $item->name }}</td>
                           <td>{{ $item->description }}</td>
                           <td>{{ $item->price }}</td>
+                          <td>{{ $item->dsicount }}</td>
                           <td>{{ $item->stock }}</td>
-                          <td style="width:120%;">
-                            <img src="{{ Storage::url('public/images/').$item->picture }}" alt="Image">
+                          <td >
+                            <img src="{{ Storage::url('public/images/').$item->picture }}" width="40px" alt="Image">
                           </td>
                           {{-- <td> --}}
                             {{-- <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">Edit</a> --}}
-                            <td>
+                            {{-- <td>
                                 <a href="{{ route('product.edit', $item->id) }}" class="btn btn-secondary">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
@@ -94,7 +96,20 @@
                                     @method('DELETE')
                                     @csrf
                                 </form>
-                            </td>
+                            </td> --}}
+                            <td>
+                            <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+
+                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash"></i></button>
+                                    @method('DELETE')
+                                    @csrf
+
+                            </form>
+                          </td>
                         </tr>
                         @endforeach
                     @endforeach

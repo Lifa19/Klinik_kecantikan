@@ -34,7 +34,7 @@
                                             <p class="card-text">{{ $item->name }}</p>
                                             <p class="card-title">RP.{{ $item->price }}</p>
                                             <p class="card-title">Stok  :  {{ $item->stock }}</p>
-                                            <form action="{{ route('basket.store')}}" method="POST">
+                                            <form action="{{ route('cart.store')}}" method="POST">
                                                 @csrf
                                                 <input name="product_id" type="text" value="{{ $item->id}}" class="hidden">
                                                     <button  class="btn btn-color" type="submit" >

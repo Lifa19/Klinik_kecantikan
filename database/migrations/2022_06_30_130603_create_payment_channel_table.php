@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('booking_details', function (Blueprint $table) {
+        Schema::create('payment_channel', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('booking_id');
-            $table->foreign('booking_id')->references('id')->on('bookings');
-            $table->string('evidence', 100)->nullable();
-            $table->datetime('order_time');
-            $table->datetime('payment_time')->nullable();
+            $table->string('name', 100);
+            $table->string('credential', 100);
+            $table->string('atas_nama', 100);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_details');
+        Schema::dropIfExists('payment_channel');
     }
 };

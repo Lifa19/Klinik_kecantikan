@@ -27,11 +27,10 @@ class DatabaseSeeder extends Seeder
             DiscountSeeder::class,
             MemberSeeder::class,
             CustomerSeeder::class,
-            BasketSeeder::class,
+            CartSeeder::class,
             BookingSeeder::class,
             ProfileSeeder::class,
-
-
+            PaymentChannel::class,
         ]);
     }
 }

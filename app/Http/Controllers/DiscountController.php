@@ -38,7 +38,8 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        $discount = Discount::all();
+        return view('admin.discount.create', compact('discount'));
     }
 
     /**
@@ -50,27 +51,22 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'product_id'   => 'required',
             'deskripsi'    => 'required',
-            'stock'         => 'required',
+            'presentase'   => 'required',
+            'stock'        => 'required',
             'Image'        => 'required',
 
         ]);
 
         $product = Product::findOrFail();
         $data = $request->all();
-        // dd($data);
-        $data['presentase'] = $product->price * $data[''];
-        $data['subtotal'] = $product->price * $data['quota'];
-        $data['date']   = date('y-m-d');
-
-        if ($product->stock < $data['quota']) {
-            return redirect()->back()
-                             ->with('error', 'Stock Promo Sudah Habis.');
-        }
+        // $data['presentase'] = $data['presentase'] * $product->price / 100;
 
         $discount = Discount::create([
             'product_id'  => $product->id,
             'deskripsi'   => $data['deskripsi'],
+            'presentase'  => $data['presentase'],
             'stock'       => $data['stock'],
             'image'       => $data['image'],
         ]);

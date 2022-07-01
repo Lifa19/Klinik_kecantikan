@@ -56,7 +56,7 @@
           </li>
           <li class="menu-header">Konfirmasi</li>
           <li class="nav-item dropdown">
-            <a href="" class="nav-link"><i class="fas fa-plug"></i> <span>pesanan</span></a>
+            <a href="{{ route('indexAdmin') }}" class="nav-link"><i class="fas fa-plug"></i> <span>pesanan</span></a>
           </li>
     </aside>
   </div>

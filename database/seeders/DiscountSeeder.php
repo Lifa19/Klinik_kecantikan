@@ -19,7 +19,7 @@ class DiscountSeeder extends Seeder
         $discounts = [
             [
                 'product_id'  => '2',
-                'presentase' => '50%',
+                'presentase' => 50,
                 'description' => 'coba',
                 'stock' => '2',
 

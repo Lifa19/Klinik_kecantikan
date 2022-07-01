@@ -32,4 +32,9 @@ class Booking extends Model
     // public function BookingProduct(){
     //     return $this->belongsTo(BookingProduct::class, 'booking_product_id');
     // }
+
+    public function bookingDetail()
+    {
+        return $this->hasOne(BookingDetail::class, 'booking_id');
+    }
 }

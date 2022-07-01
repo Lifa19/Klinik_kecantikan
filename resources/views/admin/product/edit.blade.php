@@ -75,6 +75,28 @@
                 </div>
               </div>
               <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Discount</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control @error('discount') is-invalid @enderror" id="inputdiscount" name="discount" value="{{$product->discount}}" placeholder="Harga">
+                  @error('discount')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                  @enderror
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Stok</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="number" class="form-control @error('stock') is-invalid @enderror" id="inputStock" name="stock" value="{{$product->stock}}" placeholder="Harga">
+                  @error('stock')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                  @enderror
+                </div>
+              </div>
+              <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
                 <div class="col-sm-12 col-md-7">
                     <label for="image-upload" id="image-label">Choose File</label>
