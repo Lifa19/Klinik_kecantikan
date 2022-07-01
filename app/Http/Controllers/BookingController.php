@@ -82,15 +82,16 @@ class BookingController extends Controller
     public function store(Request $request, $id)
     {
         $request->validate([
-            'customer_id'   => 'required',
+            'customer_id' => 'required',
             'quota'       => 'required',
+            'subtotal'    => 'required',
         ]);
 
         $product = Product::findOrFail($id);
         $data = $request->all();
         // dd($data);
         $data['no_invoice'] = $this->generateInvoice();
-        $data['subtotal'] = $product->price * $data['quota'];
+        $data['subtotal'] = $data['subtotal'] * $data['quota'];
         $data['date']   = date('y-m-d');
 
         if ($product->stock < $data['quota']) {

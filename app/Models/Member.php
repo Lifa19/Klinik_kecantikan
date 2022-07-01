@@ -21,7 +21,7 @@ class Member extends Model
     public function User(){
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function Discounts(){
-        return $this->belongsTo(Discount::class,'dsicount_id');
+    public function Discount(){
+        return $this->belongsTo(Discount::class,'discount_id');
     }
 }

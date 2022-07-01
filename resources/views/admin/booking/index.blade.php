@@ -60,6 +60,7 @@
                             <th>Qty</th>
                             <th>Total Bayar</th>
                             <th>Invoce</th>
+                            <th>Bukti Pembayaran</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -73,6 +74,11 @@
                                 <td>{{ $booking->qty }}</td>
                                 <td>{{ $booking->subtotal }}</td>
                                 <td>{{ $booking->no_invoice }}</td>
+                                <td>
+                                    @if (!is_null($booking->bookingDetail->evidence))
+                                        <img src="{{ Storage::url('public/images/bukti_pembayaran/'.$booking->bookingDetail->evidence) }}" alt="Bukti Pembayaran" width="200 px">
+                                    @endif
+                                </td>
                                 <td>
                                 {{-- <form action="" method="POST">
                                     @csrf --}}

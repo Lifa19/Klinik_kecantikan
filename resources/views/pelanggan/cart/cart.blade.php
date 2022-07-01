@@ -37,6 +37,8 @@
                         <th>Pesanan</th>
                         <th>Gambar</th>
                         <th>Harga</th>
+                        <th>Diskon</th>
+                        <th>Subtotal</th>
                         <th>Qty</th>
                         <th>ChekOut</th>
                     </tr>
@@ -51,8 +53,26 @@
                                     <img src="{{ Storage::url('public/images/').$cart->Product->picture }}" alt="Image">
                                 </td>
                                 <td>{{ $cart->Product->price }}</td>
+                                @php
+                                    $auth = auth()->user();
+
+                                    if (auth()->user()->Member->exists()) {
+                                        $promo = $auth->Member->Discount->presentase;
+                                    }else{
+                                        $promo = 0;
+                                    }
+
+                                    if (!is_null($cart->Product->discount)) {
+                                        $diskon = (is_null($cart->Product->discount) ? 0 : ($cart->Product->discount + $promo) / 100) * $cart->Product->price;
+                                    }else{
+                                        $diskon = (is_null($cart->Product->discount) ? 0 : $cart->Product->discount / 100) * $cart->Product->price;
+                                    }
+                                @endphp
+                                <td>{{ is_null($cart->Product->discount) ? "0%" : $cart->Product->discount + $promo.'%' }}</td>
+                                <td>{{ $cart->Product->price - $diskon }}</td>
                                 <form action="{{ route('booking.store', $cart->Product->id) }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="subtotal" value="{{ $cart->Product->price - $diskon }}">
                                 <td>
                                     <input type="number" name="quota" class="form-control form-sm">
                                 </td>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\PaymentChannel;
+
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -13,7 +16,9 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::where('customer_id', auth()->user()->Customer->id)->get();
+        $payment_channels = PaymentChannel::all();
+        return view('pelanggan.order.index', compact('bookings', 'payment_channels'));
     }
 
     /**

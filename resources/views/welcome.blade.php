@@ -96,7 +96,7 @@
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
-                    <img class="slider_img animate-in" src="{{ asset('vendor/client/assets/img/slides/sequence/img-1.png') }}" alt="">
+                    <img class="slider_img animate-in" src="{{ asset('vendor/client/assets/img/slides/sequence/logo2.png') }}" alt="">
                   </li>
                   <!-- Layer 2 -->
                   <li>
@@ -109,7 +109,7 @@
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
-                    <img class="slider_img" src="{{ asset('vendor/client/assets/img/slides/sequence/img-2.png') }}" alt="">
+                    <img class="slider_img" src="{{ asset('vendor/client/assets/img/slides/sequence/logo3.png') }}" alt="">
                   </li>
                   <!-- Layer 3 -->
                   <li>
@@ -122,7 +122,7 @@
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
-                    <img class="slider_img" src="{{ asset('vendor/client/assets/img/slides/sequence/img-3.png') }}" alt="">
+                    <img class="slider_img" src="{{ asset('vendor/client/assets/img/slides/sequence/logo4.png') }}" alt="">
                   </li>
                 </ul>
               </div>

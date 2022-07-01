@@ -48,5 +48,8 @@ class User extends Authenticatable
     public function Employee(){
         return $this->hasOne(Employee::class, 'user_id');
     }
+    public function Member(){
+        return $this->hasOne(Member::class, 'user_id');
+    }
 }
 

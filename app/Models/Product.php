@@ -23,4 +23,8 @@ class Product extends Model
     public function CategoryProduct(){
         return $this->belongsTo(CategoryProduct::class);
     }
+
+    public function discount(){
+        return $this->hasOne(Discount::class, 'product_id');
+    }
 }

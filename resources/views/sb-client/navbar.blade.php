@@ -5,7 +5,7 @@
       <div class="navbar-inner">
         <div class="container">
           <!-- logo -->
-          <a class="brand logo" href="index.html"><img src="{{ asset('vendor/client/assets/img/logo.png') }}" alt="" /></a>
+          <a class="brand logo" href="index.html"><img src="{{ asset('vendor/client/assets/img/log2.png') }}"  width="300px" alt="" /></a>
           <!-- end logo -->
           <!-- top menu -->
           <div class="navigation">

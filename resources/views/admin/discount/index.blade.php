@@ -50,7 +50,6 @@
                           <th class="text-center">
                             <i class="fas fa-th"></i>
                           </th>
-                          <th>Nama</th>
                           <th>Produk</th>
                           <th>Potongan</th>
                           <th>Deskripsi</th>

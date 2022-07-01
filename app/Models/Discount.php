@@ -18,4 +18,8 @@ class Discount extends Model
     public function Products(){
         return $this->belongsTo(Product::class,'product_id');
     }
+
+    public function Member(){
+        return $this->hasMany(Member::class, 'discount_id');
+    }
 }

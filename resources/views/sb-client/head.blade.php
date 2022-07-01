@@ -18,7 +18,7 @@
     <link href="{{ asset('vendor/client/assets/color/default.css') }}" rel="stylesheet">
 
     <!-- fav and touch icons -->
-    <link rel="shortcut icon" href="{{ asset('vendor/client/assets/ico/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('vendor/client/assets/ico/logo1.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('vendor/clientassets/ico/apple-touch-icon-144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('vendor/client/assets/ico/apple-touch-icon-114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('vendor/client/assets/ico/apple-touch-icon-72-precomposed.png') }}">
