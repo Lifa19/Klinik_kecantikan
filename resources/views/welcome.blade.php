@@ -88,12 +88,13 @@
                   <!-- Layer 1 -->
                   <li>
                     <div class="info animate-in">
-                      <h2>Awal</h2>
+                      <h2>SA Beauty Center</h2>
                       <br>
-                      <h3>Corporate business</h3>
+                      <h3>Klinik Kecantikan Sumenep</h3>
                       <p>
-                        Lorem ipsum dolor sit amet, munere commodo ut nam, quod volutpat in per. At nec case iriure, consul recteque nec et.
-                      </p>
+                        Klinik Kecantikan SA Beauty ini menawarkan solusi estetika profesional dimulai dari kepala hingga ujung kaki. Berpengalaman dalam membuat contouring wajah menjadi lebih ideal dan sempurna
+                        SA Beauty Center didukung oleh tim dokter ahli dan memiliki kompetensi tinggi serta selalu melakukan pengembangan dan inovasi untuk meningkatkan kualitas layanan.
+                        </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
                     <img class="slider_img animate-in" src="{{ asset('vendor/client/assets/img/slides/sequence/logo2.png') }}" alt="">
@@ -101,11 +102,12 @@
                   <!-- Layer 2 -->
                   <li>
                     <div class="info">
-                      <h2>Smart and fresh</h2>
+                      <h2>SA Academy</h2>
                       <br>
-                      <h3>Rich of features</h3>
+                      <h3>Pelatihan</h3>
                       <p>
-                        Lorem ipsum dolor sit amet, munere commodo ut nam, quod volutpat in per. At nec case iriure, consul recteque nec et.
+                        Program ini menawarkan pelatihan dalam pengetahuan dan keterampilan yang diperlukan bagi siswa untuk menjadi profesional kecantikan yang berspesialisasi dalam perawatan kulit. Beberapa program mungkin fokus pada mengajar siswa bagaimana melakukan perawatan wajah dan kulit sementara yang lain mungkin juga mendemonstrasikan teknik rias wajah.
+                        Program lanjutan dapat berfokus pada topik seperti elektrolisis, pengangkatan rambut laser, aromaterapi, dan perawatan jerawat.
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
@@ -114,11 +116,11 @@
                   <!-- Layer 3 -->
                   <li>
                     <div class="info">
-                      <h2>Far from ugly</h2>
+                      <h2>Klinik Kecantikan SA Beauty Center</h2>
                       <br>
-                      <h3>Latest technology</h3>
+                      <h3>Perum. Alam Permai Asri Blok G. 16, Kolor Sumenep.</h3>
                       <p>
-                        Lorem ipsum dolor sit amet, munere commodo ut nam, quod volutpat in per. At nec case iriure, consul recteque nec et.
+                        Open : 08.30 - 21.00
                       </p>
                       {{-- <a class="btn btn-success" href="#">Learn more &raquo;</a> --}}
                     </div>
@@ -135,7 +137,7 @@
   </section>
   <section id="maincontent">
     <div class="container">
-      <div class="row">
+      {{-- <div class="row">
         <div class="span3 features">
           <i class="icon-circled icon-32 icon-suitcase left active"></i>
           <h4>Responsive bootstrap</h4>
@@ -176,23 +178,25 @@
           </p>
           <a href="#">Learn more</a>
         </div>
-      </div>
+      </div> --}}
       <div class="row">
         <div class="span12">
           <div class="tagline centered">
             <div class="row">
               <div class="span12">
                 <div class="tagline_text">
-                  <h2>Don't miss this special offer for limited time only!</h2>
+                  <h2>Jangan Lewatkan Promo-Promo Khusus Pada Klinik Kecantikan SA Beauty Center</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, vix ceteros noluisse intellegat ne, ex nec insolens liberavisse, no adhuc causae nominati duo.
+                    banyak sekali diskon di SA Beauty Center
                   </p>
                 </div>
                 <div class="btn-toolbar cta">
-                  <a class="btn btn-large btn-color" href="#">
-							<i class="icon-plane icon-white"></i> Try free version </a>
                   <a class="btn btn-large btn-inverse" href="#">
-							<i class="icon-shopping-cart icon-white"></i> Buy license </a>
+							<i class="icon-shopping-cart icon-white"></i> Pesan Treaetment </a>
+                  <a class="btn btn-large btn-inverse" href="#">
+							<i class="icon-shopping-cart icon-white"></i> Pesan Product </a>
+                  <a class="btn btn-large btn-inverse" href="#">
+							<i class="icon-shopping-cart icon-white"></i> Pesan Academy </a>
                 </div>
               </div>
             </div>
@@ -200,71 +204,39 @@
           <!-- end tagline -->
         </div>
       </div>
-      <div class="row">
-        <div class="home-posts">
-          <div class="span12">
-            <h3>Recent blog posts</h3>
+        <div class="row">
+            <div class="home-posts">
+            <div class="span12">
+                <h3>Recent blog posts</h3>
           </div>
           <div class="span3">
             <div class="post-image">
               <a href="post_right_sidebar.html">
-					<img src="{{ asset('vendor/client/assets/img/dummies/blog1.jpg') }}" alt="">
+                {{-- <img src="{{ asset('vendor/client/assets/img/dummies/blog1.jpg') }}" alt=""> --}}
+                {{-- <img src="URL('https://youtu.be/hcKItJkKbdM')" alt=""> --}}
+                {{-- <label for="">
+                    https://youtu.be/hcKItJkKbdM
+                </label> --}}
+                    <label>
+                        {{-- <iframe width="260" height="126" src="https://youtu.be/hcKItJkKbdM"></iframe>
+                    <source src="https://youtu.be/hcKItJkKbdM"> --}}
+                <img src="{{ asset('vendor/client/assets/img/dummies/foto2.jpeg') }}" width="500px" alt="">
+                    {{-- <iframe class="embed-responsive-item" width="260" height="126" src="https://youtu.be/hcKItJkKbdM" allowfullscreen=""></iframe> --}}
+                    </label>
 					</a>
             </div>
             <div class="entry-meta">
-              <a href="#"><i class="icon-square icon-48 icon-pencil left"></i></a>
-              <span class="date">Sep 17 <br>
-					2013</span>
-            </div>
-            <!-- end .entry-meta -->
-            <div class="entry-body">
-              <a href="post_right_sidebar.html">
-                <h5 class="title">This is a standard post</h5>
-              </a>
-              <p>
-                Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor aenean massa.
-              </p>
-            </div>
-            <!-- end .entry-body -->
-            <div class="clear">
-            </div>
-          </div>
-          <div class="span3">
-            <div class="post-image">
-              <a href="#"><img src="{{ asset('vendor/client/assets/img/dummies/blog2.jpg') }}" alt=""></a>
-            </div>
-            <div class="entry-meta">
-              <a href="#"><i class="icon-square icon-48 icon-pencil left"></i></a>
-              <span class="date">Sep 17 2013</span>
-            </div>
-            <!-- end .entry-meta -->
-            <div class="entry-body">
-              <a href="post_right_sidebar.html">
-                <h5 class="title">Example post image format</h5>
-              </a>
-              <p>
-                Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor aenean massa.
-              </p>
-            </div>
-            <!-- end .entry-body -->
-            <div class="clear">
-            </div>
-          </div>
-          <div class="span3">
-            <div class="post-image">
-              <a href="#"><img src="{{ asset('vendor/client/assets/img/dummies/blog2.jpg') }}" alt=""></a>
-            </div>
-            <div class="entry-meta">
               <a href="#"><i class="icon-square icon-48 icon-facetime-video left"></i></a>
-              <span class="date">Sep 17 2011</span>
+              <span class="date">Agustus 21 <br>
+					2021</span>
             </div>
             <!-- end .entry-meta -->
             <div class="entry-body">
-              <a href="post_right_sidebar.html">
-                <h5 class="title">Amazing video post format</h5>
+              <a href="https://youtu.be/hcKItJkKbdM">
+                <h5 class="title">IPL ACNE</h5>
               </a>
               <p>
-                Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque.
+                IPL ance treatment #carahilangkanjerawat #caraamanhempasjerawat
               </p>
             </div>
             <!-- end .entry-body -->
@@ -272,6 +244,48 @@
             </div>
           </div>
           <div class="span3">
+            <div class="post-image">
+              <a href="#"><img  src="{{ asset('vendor/client/assets/img/dummies/foto3.jpeg') }}" width="500px" alt=""></a>
+            </div>
+            <div class="entry-meta">
+              <a href="https://youtu.be/WZvOlxWC1YE"><i class="icon-square icon-48 icon-facetime-video left"></i></a>
+              <span class="date">Desember 3 2020</span>
+            </div>
+            <!-- end .entry-meta -->
+            <div class="entry-body">
+              <a href="post_right_sidebar.html">
+                <h5 class="title">S.A brows</h5>
+              </a>
+              <p>
+                hari pertama sulam. kita tunggu hasil peel off dan retouch.
+              </p>
+            </div>
+            <!-- end .entry-body -->
+            <div class="clear">
+            </div>
+          </div>
+          <div class="span3">
+            <div class="post-image">
+              <a href="#"><img src="{{ asset('vendor/client/assets/img/dummies/foto1.jpeg') }}" width="500px" alt=""></a>
+            </div>
+            <div class="entry-meta">
+              <a href="https://youtu.be/-wpW-cbjfYA"><i class="icon-square icon-48 icon-facetime-video left"></i></a>
+              <span class="date">Oktober 10 2021</span>
+            </div>
+            <!-- end .entry-meta -->
+            <div class="entry-body">
+              <a href="post_right_sidebar.html">
+                <h5 class="title">Laser Glow Black doll</h5>
+              </a>
+              <p>
+                Laser Glow Black Doll banyak sekali memiliki manfaat
+              </p>
+            </div>
+            <!-- end .entry-body -->
+            <div class="clear">
+            </div>
+          </div>
+          {{-- <div class="span3">
             <div class="post-slider">
               <!-- start flexslider -->
               <div class="flexslider">
@@ -303,7 +317,7 @@
               </p>
             </div>
             <!-- end .entry-body -->
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

@@ -53,18 +53,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'                => 'required|string|unique:products,name|max:100',
-            'description'         => 'required|string|max:255',
-            'price'               => 'required|numeric',
-            'discount'            => 'nullable|numeric',
-            'stock'               => 'required|numeric',
-            'picture'             => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'name'               => 'required|string|unique:products,name|max:100',
+            'description'        => 'required|string|max:255',
+            'price'              => 'required|numeric',
+            'stock'              => 'required|numeric',
+            'picture'            => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
             'category_product_id' => 'required',
         ]);
 
-        $product = Product::findOrFail();
         $data = $request->all();
-        $data['discount'] = $data['discount'] * $product->price / 100;
+        $data['discount'] = (int)$data['discount'];
+
 
         if ($request->file('picture')) {
             $picture                     = $request->file('picture');
@@ -73,18 +72,19 @@ class ProductController extends Controller
 
             $picture->storeAs('public/images', $picture_name);
         }
+
+
         $product = Product::create([
             'category_product_id' => $data['category_product_id'],
-            'name'        => $data['name'],
+            'name'      => $data['name'],
             'description' => $data['description'],
-            'price'       => $data['price'],
-            'discount'    => $data['discount'],
-            'stock'       => $data['stock'],
-            'picture'     => $data['picture']
+            'price'     => $data['price'],
+            'stock'     => $data['stock'],
+            'picture'   => $data['picture']
         ]);
 
         if ($product) {
-            return redirect()->route('product.index')->with('success', 'store product successfully.');
+            return redirect()->route('product.index')->with('sukses', 'Treatment Berhasil Ditambah.');
         }
     }
 
@@ -129,13 +129,31 @@ class ProductController extends Controller
             'price'       => 'required|numeric',
             'discount'    => 'nullable|numeric',
             'stock'       => 'required|numeric',
-            'picture'     => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'picture'     => 'nullable|image|mimes:jpeg,jpg,png,svg|max:2048',
+            'category_product_id' => 'required',
         ]);
 
-        $product->update($validatedData);
+        $data = $validatedData;
 
-        return redirect()->route('product.index')
-                         ->with('success', 'Data Berhasil Diupdate!');
+        if ($request->file('picture')) {
+            $picture                     = $request->file('picture');
+            $picture_name                = date('d-m-Y-H-i-s').'_'.$picture->hashName();
+            $data['picture']             = $picture_name;
+
+            $picture->storeAs('public/images', $picture_name);
+        }
+
+        $product->update([
+            'category_product_id' => $data['category_product_id'],
+            'name'        => $data['name'],
+            'description' => $data['description'],
+            'price'       => $data['price'],
+            'discount'    => $data['discount'],
+            'stock'       => $data['stock'],
+            'picture'     => !is_null($request->file('picture')) ? $data['picture'] : $product->picture
+        ]);
+
+        return redirect()->route('product.index')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -155,7 +173,9 @@ class ProductController extends Controller
     }
     public Function product()
     {
-        return view('client.product');
+        $products = Product::all();
+        $category = CategoryProduct::all();
+        return view('client.product', compact('products','category'));
     }
     public Function producttt()
     {

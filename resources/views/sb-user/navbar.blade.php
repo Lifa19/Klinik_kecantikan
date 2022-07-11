@@ -5,12 +5,13 @@
       <div class="navbar-inner">
         <div class="container">
           <!-- logo -->
-          <a class="brand logo" href="index.html"><img src="{{ asset('vendor/client/assets/img/logo.png') }}" alt="" /></a>
+          {{-- <a class="brand logo" href="index.html"><img src="{{ asset('vendor/client/assets/img/logo.png') }}" alt="" /></a> --}}
+          <a class="brand logo" href="index.html"><img src="{{ asset('vendor/client/assets/img/log2.png') }}"  width="300px" alt="" /></a>
           <!-- end logo -->
           <!-- top menu -->
           <div class="navigation">
             <nav>
-              <ul class="nav topnav">
+              <ul class="nav topnav ">
                 <li class="dropdown">
                   <a href="{{ route('userHome') }}">Home</a>
                 </li>
@@ -27,7 +28,7 @@
                     </li>
                   </ul>
                 </li> --}}
-                <li class="dropdown">
+                <li class="dropdown {{ request()->routeIs('treatment.*') ? 'active' : '' }} ">
                     <a href="{{ route('treatmentt') }}">Treatment</a>
                   </li>
                 <li class="dropdown">

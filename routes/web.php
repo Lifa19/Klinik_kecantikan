@@ -27,6 +27,8 @@ use App\Http\Controllers\{
     CartController,
     ProfileController,
     DiscountController,
+    ReportController,
+    PdfController,
 };
 use App\Models\Booking;
 
@@ -42,7 +44,7 @@ use App\Models\Booking;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view ('welcome');
 
 });
 Route::get('client/wajah', [WajahController::class, 'wajah'])->name('wajah');
@@ -56,8 +58,8 @@ Route::get('client/seminar', [SeminarController::class, 'seminar'])->name('semin
 Route::get('client/workshop', [WorkshopController::class, 'workshop'])->name('workshop');
 Route::get('client/privateclass', [PrivateClassController::class, 'privateclass'])->name('privateclass');
 Route::get('client/product', [ProductController::class, 'product'])->name('product');
-Route::get('client/academy', [WorkshopController::class, 'academy'])->name('academy');
-Route::get('client/treatment', [SulamabController::class, 'treatment'])->name('treatment');
+Route::get('client/academy', [AcademyController::class, 'academy'])->name('academy');
+Route::get('client/treatment', [TreatmentController::class, 'treatment'])->name('treatment');
 
 Auth::routes();
 
@@ -82,13 +84,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('workshop', WorkshopController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/discount', DiscountController::class);
+    Route::resource('report', ReportController::class);
+    Route::post('report/pdf-report', [ReportController::class, 'pdfReport'])->name('pdfReport');
     Route::get('pemesanan', [BookingController::class, 'indexAdmin'])->name('indexAdmin');
     Route::post('pemesanan/{booking}', [BookingController::class, 'verifyPembayaran'])->name('verifyPembayaran');
+    // Route::resource('report', DynamicPDFController::class);
+    // Route::get('/report',[DynamicPDFController::class, 'index']);
 });
 
 Route::get('/user', [HomeController::class, 'pelanggan'])->name('userHome');
-Route::get('pelanggan/editprofile', [ProfileController::class, 'editprofile'])->name('editprofile')->withoutMiddleware('userprofile');
-Route::middleware(['auth', 'role:pelanggan','userprofile'])->group(function () {
+Route::middleware(['auth', 'role:pelanggan'])->group(function () {
+    Route::get('pelanggan/editprofile', [ProfileController::class, 'editprofile'])->name('editprofile');
     Route::get('pelanggan/wajah', [WajahController::class, 'wajahh'])->name('wajahh');
     Route::get('pelanggan/tubuh', [TubuhController::class, 'tubuhh'])->name('tubuhh');
     Route::get('pelanggan/women', [WomenController::class, 'womenn'])->name('womenn');
@@ -111,6 +117,7 @@ Route::middleware(['auth', 'role:pelanggan','userprofile'])->group(function () {
     Route::get('admin/member/index', [MemberController::class, 'store'])->name('store');
     Route::get('payment/{id}',      [BookingController::class, 'formPayment'])->name('formPayment');
     Route::post('payment/{booking}', [BookingController::class, 'payment'])->name('payment');
+    Route::put('pelanggan/editprofile', [ProfileController::class, 'update'])->name('update');
 
 
 
@@ -118,7 +125,8 @@ Route::middleware(['auth', 'role:pelanggan','userprofile'])->group(function () {
 
 Route::middleware(['auth', 'role:karyawan'])->group(function () {
     Route::get('/karyawan', [HomeController::class, 'karyawan'])->name('karyawanHome');
-});
+}); Route::get('pemesanan', [BookingController::class, 'indexAdmin'])->name('indexAdmin');
+    Route::post('pemesanan/{booking}', [BookingController::class, 'verifyPembayaran'])->name('verifyPembayaran');
 
 
 

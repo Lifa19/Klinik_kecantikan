@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Auth;
 
 
 class ProfileController extends Controller
@@ -85,7 +86,22 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $customer = Customer::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name'         => 'required|string|max:100|unique:customers,name,'.$customer->id,
+            'address'      => 'required|string|max:255',
+            'phone'        => 'required|numeric|digits_between:10,13',
+            'dateOfBirth'  => 'required|date',
+            'gender'       => 'required|string',
+            'picture'      => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+        ]);
+
+        $customer->update($validatedData);
+
+        return redirect()->route('customer.index')
+                         ->with('success', 'Data Pelanggan Berhasil Diupdate!');
     }
 
     /**

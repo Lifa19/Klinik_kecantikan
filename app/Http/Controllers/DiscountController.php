@@ -50,14 +50,25 @@ class DiscountController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'product_id'   => 'required',
+            'product_id'   => 'required|unique:discounts,product_id',
             'deskripsi'    => 'required',
             'presentase'   => 'required',
             'stock'        => 'required',
-            'Image'        => 'required',
+            'picture'      => 'required',
 
         ]);
+         $data = $request->all();
+
+        if ($request->file('picture')) {
+            $picture                     = $request->file('picture');
+            $picture_name                = date('d-m-Y-H-i-s').'_'.$picture->hashName();
+            $data['picture']             = $picture_name;
+
+            $picture->storeAs('public/images', $picture_name);
+        }
+
 
         $product = Product::findOrFail();
         $data = $request->all();
@@ -68,8 +79,9 @@ class DiscountController extends Controller
             'deskripsi'   => $data['deskripsi'],
             'presentase'  => $data['presentase'],
             'stock'       => $data['stock'],
-            'image'       => $data['image'],
+            'picture'       => $data['picture'],
         ]);
+
 
         if ($discount) {
             $product->update([
@@ -102,7 +114,7 @@ class DiscountController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
     }
 
     /**

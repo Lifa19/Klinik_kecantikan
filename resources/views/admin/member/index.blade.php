@@ -60,9 +60,7 @@
                             <i class="fas fa-th"></i>
                           </th>
                           <th>Nama</th>
-                          <th>Diskon</th>
-                          <th>Potongan</th>
-                          <th>Action</th>
+                          <th>Tanggal</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -73,20 +71,8 @@
                               <i class="fas fa-th"></i>
                             </div>
                           </td>
-                          <td>{{ $member->presentase }}</td>
-                          <td>{{ $member->presentase }}</td>
-                          <td>{{ $member->presentase }}</td>
-                            <form action="{{ route('member.destroy', $member->id) }}" method="POST">
-                                <td>
-                                <a href="{{ route('member.edit', $member->id) }}" class="btn btn-secondary">
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-
-                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash"></i></button>
-                                    @method('DELETE')
-                                    @csrf
-                                </td>
-                            </form>
+                          <td>{{ $member->user->name }}</td>
+                          <td>{{ $member->created_at->format('Y-m-d') }}</td>
                         </tr>
                         @endforeach
                       </tbody>

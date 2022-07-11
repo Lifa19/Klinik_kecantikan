@@ -40,7 +40,14 @@
                   <h4>Treatment</h4>
                   <div class="card-header-action">
                   <a href="{{ route('treatment.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
-
+                    {{-- <form>
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        </div>
+                      </div>
+                    </form> --}}
                   </div>
                 </div>
                 <div class="card-body p-0">

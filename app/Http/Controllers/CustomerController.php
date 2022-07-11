@@ -136,7 +136,27 @@ class CustomerController extends Controller
             'picture'      => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
         ]);
 
-        $customer->update($validatedData);
+        // $customer->update($validatedData);
+        $data = $validatedData;
+
+        if ($request->file('picture')) {
+            $picture                     = $request->file('picture');
+            $picture_name                = date('d-m-Y-H-i-s').'_'.$picture->hashName();
+            $data['picture']             = $picture_name;
+
+            $picture->storeAs('public/images', $picture_name);
+        }
+
+
+        $customer->update([
+            'name'        => $data['name'],
+            'adress' => $data['adress'],
+            'phone'       => $data['phone'],
+            'datOfBirth'    => $data['datOfBirth'],
+            'gender'       => $data['gender'],
+            'picture'     => !is_null($request->file('picture')) ? $data['picture'] : $customer->picture
+
+        ]);
 
         return redirect()->route('customer.index')
                          ->with('success', 'Data Pelanggan Berhasil Diupdate!');

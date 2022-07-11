@@ -23,11 +23,13 @@
           <div class="well">
             <div class="centered">
               <i class="icon-circled icon-64 icon-suitcase active"><a href="{{ route('privateclass') }}"></a></i>
-              <h4>High integrity</h4>
+              <h4>Seminar</h4>
               <div class="dotted_line">
               </div>
               <p>
-                Dolorem adipiscing definiebas ut nec. Dolore consectetuer eu vim, elit molestie ei has, petentium imperdiet in pri. Mel virtute efficiantur ne, zril omnes sed no, sit eu duis semper.
+                Adanya Pelaksanaan Seminar diperuntukkan untuk bagi semua kalangan yang ingin memiliki kulit yang sehat
+                “Seminar ini tidak hanya dikhususkan untuk mereka yang berwajah cantik saja, akan tetapi bagi mereka yang ingin memiliki kulit sehat.
+                Bagi mereka yang tidak percaya diri akan masalah-masalah pada kulitnya, terutama wajah, bahkan bagi mereka yang ingin meningkatkan/ mempertahankan kulit cantiknya,”
               </p>
             </div>
           </div>
@@ -36,11 +38,11 @@
           <div class="well">
             <div class="centered">
               <i class="icon-circled icon-64 icon-leaf active"></i>
-              <h4><a href="{{ route('workshop') }}"></a>Following trends</h4>
+              <h4><a href="{{ route('workshop') }}"></a>Private Class</h4>
               <div class="dotted_line">
               </div>
               <p>
-                Dolorem adipiscing definiebas ut nec. Dolore consectetuer eu vim, elit molestie ei has, petentium imperdiet in pri. Mel virtute efficiantur ne, zril omnes sed no, sit eu duis semper.
+                Kami juga menyediakan Kelas Privat dengan materi kecantikan yang lengkap. Pelatihan intensif cukup 2 hari langsung Mahir dan Bisa. Kelas yang dibuka untuk umum kelas.
               </p>
             </div>
           </div>
@@ -49,11 +51,11 @@
           <div class="well">
             <div class="centered">
               <i class="icon-circled icon-64 icon-coffee active"><a href="{{ route('seminar') }}"></a></i>
-              <h4>Have a solid team</h4>
+              <h4>Workshop</h4>
               <div class="dotted_line">
               </div>
               <p>
-                Dolorem adipiscing definiebas ut nec. Dolore consectetuer eu vim, elit molestie ei has, petentium imperdiet in pri. Mel virtute efficiantur ne, zril omnes sed no, sit eu duis semper.
+                Workshop pada SA Beauty Center ini menyediakan beberapa pengetahuan dan pengalaman.
               </p>
             </div>
           </div>
@@ -65,9 +67,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      {{-- <div class="row">
         <div class="span12">
-          <h4>Our services</h4>
+          <h4>Private Class</h4>
           <!-- start: Accordion -->
           <div class="accordion" id="accordion2">
             <div class="accordion-group">
@@ -112,7 +114,7 @@
           </div>
           <!--end: Accordion -->
         </div>
-      </div>
+      </div> --}}
     </div>
   </section>
   <!-- Footer

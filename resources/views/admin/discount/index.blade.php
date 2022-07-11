@@ -66,9 +66,10 @@
                               <i class="fas fa-th"></i>
                             </div>
                           </td>
-                          {{-- <td>{{ $discount->product->id }}</td> --}}
-                          <td>{{ $discount->description }}</td>
+                          <td>{{ !is_null('$discount->Product->id') }}</td>
                           <td>{{ $discount->price }}</td>
+                          <td>{{ $discount->presentase }}</td>
+                          <td>{{ $discount->description }}</td>
                           <td>{{ $discount->stock }}</td>
                           {{-- <td> --}}
                             {{-- <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">Edit</a> --}}

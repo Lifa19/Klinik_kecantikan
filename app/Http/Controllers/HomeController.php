@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\bookingDetail;
+use App\Models\Booking;
+use App\Models\Member;
 
 class HomeController extends Controller
 {
@@ -27,7 +31,12 @@ class HomeController extends Controller
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $customer = Customer::count();
+        $booking  = Booking::count();
+        $accepted_booking = bookingDetail::where('payment_status', 'LUNAS')->count();
+        $members  = Member::count();
+
+        return view('admin.dashboard', compact('customer', 'booking', 'accepted_booking', 'members'));
     }
     public function karyawan()
     {

@@ -9,7 +9,7 @@
             <h1>Laporan</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item">Laporan</div>
+                <div class="breadcrumb-item">Product</div>
               </div>
           </div>
           @if (session('success'))
@@ -37,73 +37,67 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Laporan</h4>
-                  <a href="{{ route('report.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
-                  <div class="card-header-action">
-                    <form>
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                  {{-- <h4>Laporan</h4> --}}
+                  <form action="{{ route('pdfReport') }}" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <input type="date" name="start_date" placeholder="Start Date"> To
+                        <input type="date" name="end_date" placeholder="End Date">
+                        <div class="px-3">
+                            <select name="category">
+                                <option value="">-- Select Category --</option>
+                                @foreach ($category as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                      </div>
-                    </form>
-                  </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Cetak PDF">
+                </form>
+                    <div class="card-header-action">
+
+                    </div>
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive">
-                    <table class="table table-striped" id="sortable-table">
-                      <thead>
-                        <tr>
-                          <th class="text-center">
-                            <i class="fas fa-th"></i>
-                          </th>
-                          <th>Nama</th>
-                          <th>Tanggal</th>
-                          <th>Harga</th>
-                          <th>Image</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($academies->where('name', 'Laporan') as $academy)
-                          @foreach ($academy->academies as $item)
-                          <tr>
-                            <td>
-                              <div class="sort-handler">
-                                <i class="fas fa-th"></i>
-                              </div>
-                            </td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->price }}</td>
-                            <td>
-                              <img src="{{ Storage::url('public/images/').$item->picture }}" alt="Image">
-                            </td>
-                            <td>
-                              <a href="{{ route('report.edit', $item->id) }}" class="btn btn-secondary">Edit</a>
-
-                              <form action="{{ route('report.destroy', $item->id) }}" method="POST">
-                                <input type="submit" class="btn btn-danger" value="delete">
-                                @method('DELETE')
-                                @csrf
-                              </form>
-                            </td>
-                          </tr>
-                          @endforeach
-                        @endforeach
-                      </tbody>
+                    <table class="table table-bordered mb-5">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">#</th>
+                                <th scope="col">Produk</th>
+                                <th scope="col">Pelanggan</th>
+                                <th scope="col">No Invoice</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Qty</th>
+                                <th scope="col">Diskon</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($data as $report)
+                            <tr>
+                                <td scope="row">{{ $loop->iteration }}</td>
+                                <td>{{ $report->Products->name }}</td>
+                                <td>{{ $report->Customer->name }}</td>
+                                <td>{{ $report->no_invoice }}</td>
+                                <td>{{ $report->created_at}}</td>
+                                <td>{{ $report->qty }}</td>
+                                <td>{{ $report->Products->discount }}</td>
+                                <td>{{ $report->subtotal }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
-                  </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    </div>
+</div>
+</div>
+</div>
+</section>
+</div>
 </div>
 
-  @endsection
+
 
 @push('page-scripts')
 

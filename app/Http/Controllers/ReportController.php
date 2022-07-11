@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Product;
+use App\Models\CategoryProduct;
 use App\Models\PaymentChannel;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 use Illuminate\Http\Request;
 
@@ -16,9 +20,14 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::where('customer_id', auth()->user()->Customer->id)->get();
-        $payment_channels = PaymentChannel::all();
-        return view('pelanggan.order.index', compact('bookings', 'payment_channels'));
+        // $bookings = Booking::where('customer_id', auth()->user()->Customer->id)->get();
+        // $payment_channels = PaymentChannel::all();
+        // return view('pelanggan.order.index', compact('bookings', 'payment_channels'));
+
+        $data = Booking::all();
+        $category = CategoryProduct::all();
+
+        return view('admin.report.index', compact('data', 'category'));
     }
 
     /**
@@ -26,9 +35,9 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+       //
     }
 
     /**
@@ -85,5 +94,23 @@ class ReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pdfReport(Request $request)
+    {
+        $booking = Booking::all();
+
+        if ($request->start_date && $request->end_date) {
+            $report = $booking->whereBetween('date', [$request->start_date, $request->end_date]);
+        }elseif ($request->category) {
+            foreach ($booking as $item) {
+                $report = $item->Products->where('category_product_id', $request->category)->get();
+            }
+        }else{
+            $report = $booking;
+        }
+
+        $pdf = Pdf::loadView('admin.report.pdf', compact('report'));
+        return $pdf->stream('Laporan.pdf');
     }
 }

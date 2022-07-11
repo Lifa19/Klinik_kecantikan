@@ -51,12 +51,12 @@ class AcademyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'               => 'required|string|unique:products,name|max:100',
-            'description'        => 'required|string|max:255',
-            'price'              => 'required|numeric',
-            'stock'              => 'required|numeric',
-            'picture'            => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
-            'category_product_id' => 'required',
+            'name'                 => 'required|string|unique:products,name|max:100',
+            'description'          => 'required|string|max:255',
+            'price'                => 'required|numeric',
+            'stock'                => 'required|numeric',
+            'picture'              => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'category_product_id'  => 'required',
         ]);
 
         $data = $request->all();
@@ -123,14 +123,36 @@ class AcademyController extends Controller
             'name'        => 'required|string|max:100|unique:products,name,'.$product->id,
             'description' => 'required|string|max:255',
             'price'       => 'required|numeric',
+            'discount'    => 'nullable|numeric',
             'stock'       => 'required|numeric',
             'picture'     => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'category_product_id' => 'required',
+
         ]);
 
-        $product->update($validatedData);
+        // $product->update($validatedData);
+        $data = $validatedData;
+
+        if ($request->file('picture')) {
+            $picture                     = $request->file('picture');
+            $picture_name                = date('d-m-Y-H-i-s').'_'.$picture->hashName();
+            $data['picture']             = $picture_name;
+
+            $picture->storeAs('public/images', $picture_name);
+        }
+
+        $product->update([
+            'category_product_id' => $data['category_product_id'],
+            'name'        => $data['name'],
+            'description' => $data['description'],
+            'price'       => $data['price'],
+            'discount'    => $data['discount'],
+            'stock'       => $data['stock'],
+            'picture'     => !is_null($request->file('picture')) ? $data['picture'] : $product->picture
+        ]);
 
         return redirect()->route('academy.index')
-                         ->with('success', 'Data Berhasil Diupdate!');
+                         ->with('success', 'Academy Berhasil Diupdate!');
     }
 
     /**
@@ -152,5 +174,10 @@ class AcademyController extends Controller
     {
         $products = CategoryProduct::all();
         return view('pelanggan.academy', compact('products'));
+    }
+    public function academy()
+    {
+        $products = CategoryProduct::all();
+        return view('client.academy', compact('products'));
     }
 }

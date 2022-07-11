@@ -33,6 +33,7 @@
                                         {{-- <div class="table-responsive"> --}}
                                         <form action="{{ route('customer.store') }}" method="POST" enctype="multipart/form-data">
                                           @csrf
+
                                           <div class="form-group row mb-10">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
                                             <div class="col-sm-12 col-md-7">
@@ -92,21 +93,10 @@
                                             </div>
                                           </div>
                                           <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                                             <div class="col-sm-12 col-md-7">
-                                              <input  class="form-control @error('name') is-invalid @enderror" id="inputName" name="name" placeholder="Nama" >
-                                                    @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                            </div>
-                                          </div>
-                                          <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
-                                            <div class="col-sm-12 col-md-7">
-                                              <input  class="form-control @error('name') is-invalid @enderror" id="inputName" name="name" placeholder="Nama" >
-                                                    @error('name')
+                                              <input type="file"  class="form-control @error('picture') is-invalid @enderror" id="inputPicture" name="picture" placeholder="Image" >
+                                                    @error('picture')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

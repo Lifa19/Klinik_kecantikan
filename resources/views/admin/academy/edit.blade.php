@@ -27,7 +27,7 @@
               <h4>Edit Academy</h4>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('academy.update', [$product->id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('academy.update', $product->id) }}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
               <div class="form-group row mb-4">
@@ -100,7 +100,8 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
                 <div class="col-sm-12 col-md-7">
                     <label for="image-upload" id="image-label">Choose File</label>
-                    <td type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image">
+                    <td>
+                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image" value="{{ $item->picture }}">
                         <img src="{{ Storage::url('public/images/').$product->picture }}" alt="Image">
                       </td>
                       @error('picture')

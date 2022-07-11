@@ -6,10 +6,10 @@
     <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Produk</h1>
+            <h1>Product</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item">Produk</div>
+                <div class="breadcrumb-item">Product</div>
               </div>
           </div>
           @if (session('success'))
@@ -37,10 +37,9 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Produk</h4>
+                  <h4>Product</h4>
                   <div class="card-header-action">
                   <a href="{{ route('product.create') }}"> <button class="btn btn-primary" >Tambah</button></a>
-
                     {{-- <form>
                       <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -69,7 +68,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($products->where('name', 'Academy') as $product)
+                    @foreach ($products->where('name', 'Produk') as $product)
                         @foreach ($product->Products as $item)
                         <tr>
                           <td>
@@ -80,14 +79,14 @@
                           <td>{{ $item->name }}</td>
                           <td>{{ $item->description }}</td>
                           <td>{{ $item->price }}</td>
-                          <td>{{ $item->dsicount }}</td>
+                          <td>{{ $item->discount }}</td>
                           <td>{{ $item->stock }}</td>
-                          <td >
+                          <td>
                             <img src="{{ Storage::url('public/images/').$item->picture }}" width="40px" alt="Image">
                           </td>
                           {{-- <td> --}}
                             {{-- <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">Edit</a> --}}
-                            {{-- <td>
+                            <td>
                                 <a href="{{ route('product.edit', $item->id) }}" class="btn btn-secondary">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
@@ -96,20 +95,7 @@
                                     @method('DELETE')
                                     @csrf
                                 </form>
-                            </td> --}}
-                            <td>
-                            <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-
-                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-secondary">
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-
-                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash"></i></button>
-                                    @method('DELETE')
-                                    @csrf
-
-                            </form>
-                          </td>
+                            </td>
                         </tr>
                         @endforeach
                     @endforeach

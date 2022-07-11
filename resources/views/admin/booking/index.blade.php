@@ -65,7 +65,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bookings as $booking )
+                            @foreach ($bookings as $booking)
+                            @if (!is_null($booking->bookingDetail))
                             <tr>
                                 <td>{{ $booking->Customer->name}}</td>
                                 {{-- <td>{!! DNS2D::getBarcodeHTML($booking->Customer->name, 'QRCODE') !!}</td> --}}
@@ -75,7 +76,7 @@
                                 <td>{{ $booking->subtotal }}</td>
                                 <td>{{ $booking->no_invoice }}</td>
                                 <td>
-                                    @if (!is_null($booking->bookingDetail->evidence))
+                                    @if ($booking->bookingDetail->evidence)
                                         <img src="{{ Storage::url('public/images/bukti_pembayaran/'.$booking->bookingDetail->evidence) }}" alt="Bukti Pembayaran" width="200 px">
                                     @endif
                                 </td>
@@ -98,6 +99,8 @@
                                 {{-- </form> --}}
                             </td>
                             </tr>
+                            @endif
+
                              @endforeach
                         </tbody>
                     </table>

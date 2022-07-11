@@ -60,6 +60,8 @@ class TreatmentController extends Controller
         ]);
 
         $data = $request->all();
+        $data['discount'] = (int)$data['discount'];
+
 
         if ($request->file('picture')) {
             $picture                     = $request->file('picture');
@@ -80,7 +82,7 @@ class TreatmentController extends Controller
         ]);
 
         if ($product) {
-            return redirect()->route('treatment.index')->with('success', 'store product successfully.');
+            return redirect()->route('treatment.index')->with('sukses', 'Treatment Berhasil Ditambah.');
         }
     }
 
@@ -123,14 +125,37 @@ class TreatmentController extends Controller
             'name'        => 'required|string|max:100|unique:products,name,'.$product->id,
             'description' => 'required|string|max:255',
             'price'       => 'required|numeric',
+            'discount'    => 'nullable|numeric',
             'stock'       => 'required|numeric',
             'picture'     => 'image|mimes:jpeg,jpg,png,svg|max:2048|',
+            'category_product_id' => 'required',
+
         ]);
 
-        $product->update($validatedData);
+        // $product->update($validatedData);
+        $data = $validatedData;
+
+        if ($request->file('picture')) {
+            $picture                     = $request->file('picture');
+            $picture_name                = date('d-m-Y-H-i-s').'_'.$picture->hashName();
+            $data['picture']             = $picture_name;
+
+            $picture->storeAs('public/images', $picture_name);
+        }
+
+        $product->update([
+            'category_product_id' => $data['category_product_id'],
+            'name'        => $data['name'],
+            'description' => $data['description'],
+            'price'       => $data['price'],
+            'discount'    => $data['discount'],
+            'stock'       => $data['stock'],
+            'picture'     => !is_null($request->file('picture')) ? $data['picture'] : $product->picture
+        ]);
+
 
         return redirect()->route('treatment.index')
-                         ->with('success', 'Data Berhasil Diupdate!');
+                         ->with('success', 'Treatment Berhasil Diupdate!');
     }
 
     /**
@@ -145,12 +170,16 @@ class TreatmentController extends Controller
         $product->delete();
 
         if ($product) {
-            return redirect()->route('treatment.index')->with('success', 'delete product successfully.');
+            return redirect()->route('treatment.index')->with('success', 'Hapus Treatment Berhasil.');
         }
     }
     public Function treatmentt()
     {
         $products = CategoryProduct::all();
         return view('pelanggan.treatment', compact('products'));
+    }
+    public Function treatment ()
+    {
+        return view('client.treatment');
     }
 }

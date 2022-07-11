@@ -25,7 +25,9 @@
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="active"><a href="#general-template" class="btn btn-color"><i></i> Pengaturan Akun </a></li>
                         <li><a href="{{ route('editprofile') }}"><i class="icon-chevron-right"></i> Edit Profil</a></li>
-                        <li><a href="{{ route('member.index') }}"><i class="icon-chevron-right"></i> Member</a></li>
+                        @if (!is_null(auth()->user()->Member))
+                        <li class="active"><a href="#general-template" class="btn btn-color"><i></i> Sebagai Member</a></li>
+                        @endif
                     </ul>
                 </div>
                 <div class="span9">
@@ -46,30 +48,30 @@
                                                 <button class="btn btn-color"><a href="#">Change Avatar</a></button> --}}
                                                 </div>
                                             </div>
-                                            <div class="card-body">
+                                            {{-- <div class="card-body">
                                                 <br>
-                                                <img src="" height="80" width="80">
-                                            </div>
+                                                <img src="{{ auth()->user()->Customer->picture }}" height="80" width="80">
+                                            </div> --}}
                                         </div>
                                         {{-- &emsp; --}}
                                         <div class="card" style="width:200px;">
                                             <div class="card-header">
                                                 {{-- <b>Profil</b> --}}
+
                                             </div>
                                             <div class="card-body">
                                             <div class="form-group col-md-7 col-30">
                                             <table>
-                                                <label for="">
                                                 Nama : <span class="text-gray">{{ auth()->user()->name }}</span>
-                                                </label>
+
                                                 <br>
-                                                Alamat: <span class="text-gray">{{ auth()->user()->address }}</span>
+                                                Alamat: <span class="text-gray">{{ auth()->user()->Customer->address }}</span>
                                                 <br>
-                                                Jenis Kelamin: <span class="text-gray"></span>
+                                                Jenis Kelamin: <span class="text-gray">{{ auth()->user()->Customer->gender }}</span>
                                                 <br>
-                                                Nomer HP : <span class="text-gray"></span>
+                                                Nomer HP : <span class="text-gray">{{ auth()->user()->Customer->phone }}</span>
                                                 <br>
-                                                Tanggal Lahir: <span class="text-gray"></span>
+                                                Tanggal Lahir: <span class="text-gray">{{ auth()->user()->Customer->dateOfBirth }}</span>
                                             </table>
                                             </div>
                                             </div>

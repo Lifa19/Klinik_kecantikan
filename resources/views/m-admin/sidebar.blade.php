@@ -48,7 +48,7 @@
             </ul>
           </li>
            <li class="nav-item dropdown">
-            <a href="" class="nav-link"><i class="far fa-file-alt"></i> <span>Laporan</span></a>
+            <a href="{{ route('report.index') }}" class="nav-link"><i class="far fa-file-alt"></i> <span>Laporan</span></a>
           </li>
           <li class="menu-header">Promo</li>
           <li class="nav-item dropdown">

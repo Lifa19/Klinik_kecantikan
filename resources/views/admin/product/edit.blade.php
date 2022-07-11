@@ -27,7 +27,7 @@
               <h4>Edit Produk</h4>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('product.update', [$product->id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
               <div class="form-group row mb-4">
@@ -45,7 +45,7 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category_product</label>
                 <div class="col-sm-12 col-md-7">
                     <select class="form-control @error('category_product_id') is-invalid @enderror" name="category_product_id" id="select_category_product_id" required>
-                        <option value="">Kategory</option>
+                        <option value="">Category</option>
                         @foreach($categoryproduct as $item)
                             <option value="{{$item->id}}" @selected($product->category_product_id == $item->id)>{{$item->name}}</option>
                         @endforeach
@@ -100,8 +100,9 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
                 <div class="col-sm-12 col-md-7">
                     <label for="image-upload" id="image-label">Choose File</label>
-                    <td type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image">
-                        <img src="{{ Storage::url('public/images/').$product->picture }}" alt="Image">
+                    <td>
+                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image" value="{{ $item->picture }}">
+                        <img src="{{ Storage::url('public/images/').$product->picture }}" alt="Image" width="200 px;">
                       </td>
                       @error('picture')
                       <span class="invalid-feedback" role="alert">

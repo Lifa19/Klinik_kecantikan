@@ -10,21 +10,21 @@
       <div class="section-header-back">
         <a href="{{ route('treatment.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
       </div>
-      <h1>Produk</h1>
+      <h1>Treatment</h1>
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         {{-- <div class="breadcrumb-item"><a href="#">Posts</a></div> --}}
-        {{-- <div class="breadcrumb-item"><a href="#">Produk</a></div> --}}
-        <div class="breadcrumb-item">Edit Produk</div>
+        {{-- <div class="breadcrumb-item"><a href="#">Treatment</a></div> --}}
+        <div class="breadcrumb-item">Edit Treatment</div>
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Produk</h2>
+      <h2 class="section-title">Treatment</h2>
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Edit Produk</h4>
+              <h4>Edit Treatment</h4>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('treatment.update', [$product->id]) }}" enctype="multipart/form-data">
@@ -77,7 +77,7 @@
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Discount</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control @error('discount') is-invalid @enderror" id="inputdiscount" name="discount" value="{{$product->discount}}" placeholder="Harga">
+                  <input type="text" class="form-control @error('discount') is-invalid @enderror" id="inputdiscount" name="discount" value="{{$product->discount}}" placeholder="Diskon">
                   @error('discount')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -100,9 +100,13 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
                 <div class="col-sm-12 col-md-7">
                     <label for="image-upload" id="image-label">Choose File</label>
-                    <td type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image">
+                    <td>
+                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="inputImage" name="picture" placeholder="Image" {{ $item->picture }}>
                         <img src="{{ Storage::url('public/images/').$product->picture }}" alt="Image">
+                  {{-- <input type="file" class="form-control @error('picture') is-invalid @enderror" id="inputpicture" name="picture" value="{{$product->picture}}" placeholder="Stok"> --}}
+
                       </td>
+
                       @error('picture')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

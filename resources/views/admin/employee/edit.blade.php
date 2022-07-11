@@ -13,7 +13,7 @@
               <div class="breadcrumd-item"><a href="#"> Form</a></div>
             </div>
           </div>
-          
+
           <div class="card">
             <div class="card-header">
               <h4>Edit Karyawan</h4>
@@ -22,7 +22,7 @@
               <form method="POST" action="{{ route('employee.update', [$employee->id]) }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-  
+
               <div class="form-group">
                 <div class="form-group">
                   <label for="inputEmail4">Nama</label>
@@ -71,12 +71,12 @@
                 <div class="form-group">
                   <select class="form-control @error('gender') is-invalid @enderror" for="InputGender" name="gender" id="InputGender" required>
                     <option value="">Gender</option>
-                    
+
                         <option value="laki-laki" @selected($employee->gender == 'laki-laki')>Laki-laki</option>
                         <option value="perempuan" @selected($employee->gender == 'perempuan')>Perempuan</option>
-        
+
                 </select>
-                
+
                 @error('gender')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -132,4 +132,4 @@
 <script src="{{ asset('vendor/admin/assets/js/custom.js') }}"></script>
 
 @endpush
-    
+
